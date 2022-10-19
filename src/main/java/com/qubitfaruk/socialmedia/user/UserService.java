@@ -24,10 +24,8 @@ public DataResult<User> getByUserName(String name){
 
     public Result save(User user){
 
-        var rule= BusinessRules.run(getByUserNameController(user.getUsername()));
-        if (!rule.isSuccess()) return rule;
-
-
+   /*     var rule= BusinessRules.run(getByUserNameController(user.getUsername()));
+        if (rule!=null) return rule;*/
         String encodedPassword=this.passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         this.userRepository.save(user);
